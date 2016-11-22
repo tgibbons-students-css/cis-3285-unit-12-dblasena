@@ -13,13 +13,23 @@ namespace ConsoleSample
         static void Main(string[] args)
         {
 
-            EntityRepository entityRepository = new EntityRepository();
+            IEntityRepository<Entity> entityRepository = new EntityRepository();
             Entity myEntity = entityRepository.GetByID(Guid.NewGuid());
 
             myEntity.Name = "Tom";
             Console.WriteLine("New entity ID: " + myEntity.ID.ToString());
             Console.WriteLine("New entity Name: " + myEntity.Name);
 
+
+
+            IEntityRepository<User> userRepository = new UserRepository();
+            User myUser = userRepository.GetByID(Guid.NewGuid());
+
+            myUser.Name = "Tom";
+            myUser.EmailAddress = "Email";
+            Console.WriteLine("New User ID: " + myUser.ID.ToString());
+            Console.WriteLine("New User Name: " + myUser.Name);
+            Console.WriteLine("New User Email: " + myUser.EmailAddress);
         }
     }
 }
